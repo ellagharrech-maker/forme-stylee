@@ -1,0 +1,277 @@
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Segoe UI", Arial, sans-serif;
+  background: linear-gradient(135deg, #e8f5f3, #cde9e5);
+  color: #1f2937;
+  margin: 0;
+  padding: 50px 20px;
+  min-height: 100vh;
+
+  /* Animation du fond */
+  animation: backgroundMove 6s ease-in-out infinite alternate;
+}
+
+
+@keyframes backgroundMove {
+  from {
+    background-position: 0% 50%;
+  }
+
+  to {
+    background-position: 100% 50%;
+  }
+}
+
+
+.fiche {
+  width: 100%;
+  max-width: 420px;
+
+  margin: 50px auto;
+  padding: 35px;
+
+  background: rgba(255, 255, 255, 0.96);
+
+  border-radius: 20px;
+  border: 1px solid #cbdedb;
+
+  text-align: center;
+
+  box-shadow:
+    0 20px 40px rgba(15, 76, 72, 0.14),
+    0 5px 15px rgba(0, 0, 0, 0.05);
+
+  /* Animation d'entrée */
+  animation: cardEnter 0.8s ease-out;
+
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+/* Animation quand la souris passe */
+.fiche:hover {
+  transform: translateY(-8px);
+
+  box-shadow:
+    0 30px 60px rgba(15, 76, 72, 0.22),
+    0 10px 25px rgba(0, 0, 0, 0.08);
+}
+
+@keyframes cardEnter {
+  from {
+    opacity: 0;
+    transform: translateY(40px) scale(0.95);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.fiche h1 {
+  margin: 0 0 20px;
+
+  font-size: 30px;
+  font-weight: 700;
+
+  color: #134e4a;
+
+  animation: titleEnter 1s ease-out;
+}
+
+/* Ligne sous le titre */
+
+.fiche h1::after {
+  content: "";
+
+  display: block;
+
+  width: 60px;
+  height: 4px;
+
+  margin: 12px auto 0;
+
+  background: #0f766e;
+
+  border-radius: 10px;
+
+  animation: lineGrow 1s ease-out;
+}
+
+@keyframes titleEnter {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+@keyframes lineGrow {
+  from {
+    width: 0;
+  }
+
+  to {
+    width: 60px;
+  }
+}
+
+
+.fiche p {
+  margin: 12px 0;
+
+  font-size: 16px;
+  line-height: 1.6;
+
+  color: #475569;
+
+  animation: textAppear 1s ease forwards;
+
+  opacity: 0;
+}
+
+/* Chaque paragraphe apparaît légèrement après l'autre */
+
+.fiche p:nth-of-type(1) {
+  animation-delay: 0.3s;
+}
+
+.fiche p:nth-of-type(2) {
+  animation-delay: 0.5s;
+}
+
+.fiche p:nth-of-type(3) {
+  animation-delay: 0.7s;
+}
+
+@keyframes textAppear {
+  from {
+    opacity: 0;
+    transform: translateX(-15px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+
+.badge {
+  display: inline-block;
+
+  padding: 8px 18px;
+  margin-bottom: 15px;
+
+  border-radius: 30px;
+
+  font-size: 14px;
+  font-weight: 600;
+
+  line-height: 1.4;
+
+  letter-spacing: 0.3px;
+
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+
+  animation: badgeAppear 0.7s ease-out;
+}
+
+.badge:hover {
+  transform: translateY(-3px) scale(1.05);
+}
+
+
+.badge-info {
+  background: #0f766e;
+  color: #ffffff;
+
+  box-shadow:
+    0 4px 10px rgba(15, 118, 110, 0.25);
+}
+
+.badge-info:hover {
+  box-shadow:
+    0 8px 18px rgba(15, 118, 110, 0.35);
+}
+
+
+.badge-elec {
+  background: #d1fae5;
+  color: #065f46;
+
+  border: 1px solid #a7f3d0;
+}
+
+.badge-elec:hover {
+  box-shadow:
+    0 8px 18px rgba(6, 95, 70, 0.15);
+}
+
+
+.badge-defaut {
+  background: #f1f5f9;
+  color: #334155;
+
+  border: 1px solid #cbd5e1;
+}
+
+
+@keyframes badgeAppear {
+  from {
+    opacity: 0;
+    transform: scale(0.7);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+
+@media (max-width: 600px) {
+
+  body {
+    padding: 30px 15px;
+  }
+
+  .fiche {
+    margin: 20px auto;
+    padding: 25px 20px;
+  }
+
+  .fiche h1 {
+    font-size: 25px;
+  }
+
+  .fiche p {
+    font-size: 15px;
+  }
+}
+
+
+@media (prefers-reduced-motion: reduce) {
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
